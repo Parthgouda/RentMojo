@@ -69,7 +69,7 @@ function Home() {
 
         const response =
           await axios.get(
-            "http://localhost:5000/products"
+            "https://rentmojo-snqg.onrender.com/products"
           );
 
         setProducts(

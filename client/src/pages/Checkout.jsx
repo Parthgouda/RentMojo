@@ -137,7 +137,7 @@ function Checkout() {
         const response =
           await axios.post(
 
-            "http://localhost:5000/orders",
+            "https://rentmojo-snqg.onrender.com/orders",
 
             orderData,
 

@@ -29,7 +29,7 @@ function RentalHistory() {
         const response =
           await axios.get(
 
-            "http://localhost:5000/orders",
+            "https://rentmojo-snqg.onrender.com/orders",
 
             {
 

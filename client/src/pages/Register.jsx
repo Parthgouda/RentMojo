@@ -59,7 +59,7 @@ function Register() {
         const response =
           await axios.post(
 
-            "http://localhost:5000/register",
+            "https://rentmojo-snqg.onrender.com/register",
 
             formData
           );

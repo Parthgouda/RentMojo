@@ -36,7 +36,7 @@ function AdminOrders() {
 
         const response =
          await axios.get(
-  "http://localhost:5000/admin/orders",
+  "https://rentmojo-snqg.onrender.com/admin/orders",
             {
               headers: {
                 authorization:
@@ -90,7 +90,7 @@ function AdminOrders() {
           );
 
         await axios.put(
-  `http://localhost:5000/admin/orders/${id}`,
+  `https://rentmojo-snqg.onrender.com/admin/orders/${id}`,
           { status },
 
           {

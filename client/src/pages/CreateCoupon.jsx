@@ -49,7 +49,7 @@ function CreateCoupon() {
 
         await axios.post(
 
-          "http://localhost:5000/coupons",
+          "https://rentmojo-snqg.onrender.com/coupons",
 
           coupon,
 

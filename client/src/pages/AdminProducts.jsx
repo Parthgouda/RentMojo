@@ -43,7 +43,7 @@ function AdminProducts() {
 
         const response =
           await axios.get(
-            "http://localhost:5000/products"
+            "https://rentmojo-snqg.onrender.com/products"
           );
 
         setProducts(
@@ -84,7 +84,7 @@ function AdminProducts() {
 
         await axios.delete(
 
-          `http://localhost:5000/products/${id}`,
+          `https://rentmojo-snqg.onrender.com/products/${id}`,
 
           {
 
