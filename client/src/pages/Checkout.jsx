@@ -34,18 +34,14 @@ function Checkout() {
   const [loading, setLoading] =
     useState(false);
 
-  const [formData, setFormData] =
-    useState({
-
-      customerName: "",
-
-      email: "",
-
-      phone: "",
-
-      address: "",
-
-    });
+ const [formData, setFormData] =
+  useState({
+    customerName: "",
+    email: "",
+    phone: "",
+    address: "",
+    deliveryDate: "",
+  });
 
   useEffect(() => {
 
@@ -128,25 +124,15 @@ function Checkout() {
 
         setLoading(true);
 
-        const orderData = {
-
-          customerName:
-            formData.customerName,
-
-          email:
-            formData.email,
-
-          phone:
-            formData.phone,
-
-          address:
-            formData.address,
-
-          products: cart,
-
-          totalPrice,
-
-        };
+       const orderData = {
+  customerName: formData.customerName,
+  email: formData.email,
+  phone: formData.phone,
+  address: formData.address,
+  deliveryDate: formData.deliveryDate,
+  products: cart,
+  totalPrice,
+};
 
         const response =
           await axios.post(
@@ -282,6 +268,18 @@ function Checkout() {
               className="border p-4 rounded-xl"
             />
 
+             
+
+<input
+  type="date"
+  name="deliveryDate"
+  value={formData.deliveryDate}
+  onChange={handleChange}
+  className="border p-4 rounded-xl"
+/>
+
+
+
             <button
               onClick={
                 placeOrder
@@ -290,9 +288,9 @@ function Checkout() {
               className="bg-green-500 text-white py-4 rounded-xl text-xl"
             >
 
-              {loading
-                ? "Placing Order..."
-                : "Place Order"}
+             {loading
+  ? "Booking Rental..."
+  : "Confirm Rental Booking (COD)"}
 
             </button>
 
@@ -354,23 +352,31 @@ function Checkout() {
 
           </div>
 
-          <div className="mt-10 flex justify-between text-3xl font-bold">
+       <div className="mt-10 flex justify-between text-3xl font-bold">
 
-            <span>Total</span>
+  <span>Total</span>
 
-            <span className="text-green-500">
+  <span className="text-green-500">
+    ₹{totalPrice}
+  </span>
 
-              ₹{totalPrice}
+</div>
 
-            </span>
-
+<div className="mt-4">
+  <h3 className="text-lg font-semibold">
+    Payment Method:
+    <span className="text-green-500">
+      {" "}Cash On Delivery (COD)
+    </span>
+  </h3>
+</div>
           </div>
 
         </div>
 
       </div>
 
-    </div>
+    
 
   );
 

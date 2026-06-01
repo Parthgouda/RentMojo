@@ -171,6 +171,27 @@ function RentalHistory() {
 
               </div>
 
+              <div className="mt-4">
+
+  <h3 className="text-lg font-semibold">
+
+    Delivery Date:
+
+    <span className="text-green-500">
+
+      {" "}
+      {order.deliveryDate
+        ? new Date(
+            order.deliveryDate
+          ).toLocaleDateString()
+        : "Not Selected"}
+
+    </span>
+
+  </h3>
+
+</div>
+
               {/* PRODUCTS */}
 
               <div className="mt-10">

@@ -62,10 +62,9 @@ function AdminDashboard() {
   useEffect(() => {
 
   const isAdmin =
-    localStorage.getItem(
-      "admin"
-    );
-
+  localStorage.getItem(
+    "adminLoggedIn"
+  );
   if (!isAdmin) {
 
     navigate("/admin-login");
@@ -89,10 +88,9 @@ function AdminDashboard() {
       try {
 
         const token =
-          localStorage.getItem(
-            "token"
-          );
-
+  localStorage.getItem(
+    "adminToken"
+  );
         const res =
           await axios.get(
 
@@ -135,11 +133,10 @@ function AdminDashboard() {
 
       try {
 
-        const token =
-          localStorage.getItem(
-            "token"
-          );
-
+       const token =
+  localStorage.getItem(
+    "adminToken"
+  );
         const response =
           await axios.get(
 
@@ -270,113 +267,6 @@ function AdminDashboard() {
     "#3b82f6",
   ];
 
-{/* =========================
-    ORDER MANAGEMENT
-========================= */}
-
-<div className="mt-10 bg-white text-black p-8 rounded-2xl shadow-xl">
-
-  <h1 className="text-3xl font-bold mb-5">
-    Manage Orders
-  </h1>
-
-  <div className="overflow-x-auto">
-
-    <table className="w-full border">
-
-      <thead>
-
-        <tr className="bg-gray-200">
-
-          <th className="p-3">Customer</th>
-
-          <th className="p-3">Amount</th>
-
-          <th className="p-3">Status</th>
-
-          <th className="p-3">Action</th>
-
-        </tr>
-
-      </thead>
-
-      <tbody>
-
-        {orders.map((order) => (
-
-          <tr
-            key={order._id}
-            className="border-b text-center"
-          >
-
-            <td className="p-3">
-              {order.customerName}
-            </td>
-
-            <td className="p-3">
-              ₹{order.totalPrice}
-            </td>
-
-            <td className="p-3">
-
-              <span className="font-bold text-blue-600">
-                {order.status}
-              </span>
-
-            </td>
-
-            <td className="p-3 flex gap-2 justify-center">
-
-              <button
-                onClick={() =>
-                  updateStatus(
-                    order._id,
-                    "Confirmed"
-                  )
-                }
-                className="bg-green-500 text-white px-3 py-1 rounded"
-              >
-                Confirm
-              </button>
-
-              <button
-                onClick={() =>
-                  updateStatus(
-                    order._id,
-                    "Shipped"
-                  )
-                }
-                className="bg-yellow-500 text-white px-3 py-1 rounded"
-              >
-                Ship
-              </button>
-
-              <button
-                onClick={() =>
-                  updateStatus(
-                    order._id,
-                    "Delivered"
-                  )
-                }
-                className="bg-blue-500 text-white px-3 py-1 rounded"
-              >
-                Deliver
-              </button>
-
-            </td>
-
-          </tr>
-
-        ))}
-
-      </tbody>
-
-    </table>
-
-  </div>
-
-</div>
-
   /* =========================
      DOWNLOAD PDF
   ========================= */
@@ -445,11 +335,10 @@ function AdminDashboard() {
 
       try {
 
-        const token =
-          localStorage.getItem(
-            "token"
-          );
-
+       const token =
+  localStorage.getItem(
+    "adminToken"
+  );
         await axios.delete(
 
           `http://localhost:5000/products/${id}`,
@@ -514,13 +403,13 @@ const updateStatus = async (
 
   const logoutAdmin = () => {
 
-  localStorage.removeItem(
-    "admin"
-  );
+ localStorage.removeItem(
+  "adminLoggedIn"
+);
 
-  localStorage.removeItem(
-    "token"
-  );
+localStorage.removeItem(
+  "adminToken"
+);
 
   navigate(
     "/admin-login"
@@ -678,6 +567,115 @@ const updateStatus = async (
             </div>
 
           </div>
+
+
+{/* =========================
+    ORDER MANAGEMENT
+========================= */}
+
+<div className="mt-10 bg-white text-black p-8 rounded-2xl shadow-xl">
+
+  <h1 className="text-3xl font-bold mb-5">
+    Manage Orders
+  </h1>
+
+  <div className="overflow-x-auto">
+
+    <table className="w-full border">
+
+      <thead>
+
+        <tr className="bg-gray-200">
+
+          <th className="p-3">Customer</th>
+
+          <th className="p-3">Amount</th>
+
+          <th className="p-3">Status</th>
+
+          <th className="p-3">Action</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        {orders.map((order) => (
+
+          <tr
+            key={order._id}
+            className="border-b text-center"
+          >
+
+            <td className="p-3">
+              {order.customerName}
+            </td>
+
+            <td className="p-3">
+              ₹{order.totalPrice}
+            </td>
+
+            <td className="p-3">
+
+              <span className="font-bold text-blue-600">
+                {order.status}
+              </span>
+
+            </td>
+
+            <td className="p-3 flex gap-2 justify-center">
+
+              <button
+                onClick={() =>
+                  updateStatus(
+                    order._id,
+                    "Confirmed"
+                  )
+                }
+                className="bg-green-500 text-white px-3 py-1 rounded"
+              >
+                Confirm
+              </button>
+
+              <button
+                onClick={() =>
+                  updateStatus(
+                    order._id,
+                    "Shipped"
+                  )
+                }
+                className="bg-yellow-500 text-white px-3 py-1 rounded"
+              >
+                Ship
+              </button>
+
+              <button
+                onClick={() =>
+                  updateStatus(
+                    order._id,
+                    "Delivered"
+                  )
+                }
+                className="bg-blue-500 text-white px-3 py-1 rounded"
+              >
+                Deliver
+              </button>
+
+            </td>
+
+          </tr>
+
+        ))}
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
 
           {/* ANALYTICS */}
 

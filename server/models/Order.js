@@ -42,6 +42,14 @@ const orderSchema =
 
       },
 
+      deliveryDate: {
+
+  type: Date,
+
+  required: true,
+
+},
+
       /* =========================
          PRODUCTS
       ========================= */
@@ -94,22 +102,37 @@ const orderSchema =
          PAYMENT
       ========================= */
 
-      totalPrice: {
+     totalPrice: {
 
-        type: Number,
+  type: Number,
 
-        required: true,
+  required: true,
 
-      },
+},
 
-      coupon: {
+paymentMethod: {
 
-        type: String,
+  type: String,
 
-        default: null,
+  default: "COD",
 
-      },
+},
 
+paymentStatus: {
+
+  type: String,
+
+  default: "Pending",
+
+},
+
+coupon: {
+
+  type: String,
+
+  default: null,
+
+},
       /* =========================
          USER ID
       ========================= */

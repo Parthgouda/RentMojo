@@ -8,6 +8,8 @@ const path = require("path");
 
 require("dotenv").config();
 
+console.log("MONGO_URI =", process.env.MONGO_URI);
+
 const Order = require("./models/Order");
 const Product = require("./models/Product");
 const User = require("./models/User");
@@ -124,6 +126,11 @@ const verifyToken = (
       )
         ? authHeader.split(" ")[1]
         : authHeader;
+
+console.log(
+  "TOKEN RECEIVED =>",
+  token
+);
 
     const decoded =
       jwt.verify(
@@ -569,62 +576,59 @@ app.post(
         "ORDER BODY =>",
         req.body
       );
+const {
 
-      const {
+  customerName,
 
-        customerName,
+  email,
 
-        email,
+  phone,
 
-        phone,
+  address,
 
-        address,
+  deliveryDate,
 
-        products,
+  products,
 
-        totalPrice,
+  totalPrice,
 
-      } = req.body;
+} = req.body;
 
-      const newOrder =
-        new Order({
+const newOrder =
+  new Order({
 
-          customerName,
+    customerName,
 
-          email,
+    email,
 
-          phone,
+    phone,
 
-          address,
+    address,
 
-          products,
+    deliveryDate,
 
-          totalPrice,
+    products,
 
-          status:
-            "Pending",
+    totalPrice,
 
-          trackingTimeline: [
+    paymentMethod: "COD",
 
-            {
+    paymentStatus: "Pending",
 
-              status:
-                "Pending",
+    status: "Pending",
 
-              message:
-                "Order Placed Successfully",
+    trackingTimeline: [
+      {
+        status: "Pending",
+        message:
+          "Order Placed Successfully",
+        time: new Date(),
+      },
+    ],
 
-              time:
-                new Date(),
+    userId: req.user.id,
 
-            },
-
-          ],
-
-          userId:
-            req.user.id,
-
-        });
+  });
 
      await newOrder.save();
 

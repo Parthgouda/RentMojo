@@ -3,22 +3,18 @@ import { useNavigate } from "react-router-dom";
 
 function AdminLogin() {
 
-  const [email, setEmail] =
-    useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [password, setPassword] =
-    useState("");
-
-  const navigate =
-    useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
 
     e.preventDefault();
 
     if (
-      email === "admin@gmail.com" &&
-      password === "admin123"
+      email === "goudaparth07@gmail.com" &&
+      password === "parth2116"
     ) {
 
       localStorage.setItem(
@@ -27,7 +23,7 @@ function AdminLogin() {
       );
 
       localStorage.setItem(
-        "token",
+        "adminToken",
         "admin-token"
       );
 
@@ -75,9 +71,7 @@ function AdminLogin() {
           placeholder="Password"
           value={password}
           onChange={(e) =>
-            setPassword(
-              e.target.value
-            )
+            setPassword(e.target.value)
           }
           className="w-full border p-4 rounded-xl mb-5 outline-none"
         />
