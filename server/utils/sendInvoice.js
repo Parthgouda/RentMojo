@@ -562,7 +562,7 @@ await new Promise(
 console.log("STEP 1: sendInvoice started");
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
+  host: "smtp-relay.brevo.com",
   port: 587,
   secure: false,
   auth: {
