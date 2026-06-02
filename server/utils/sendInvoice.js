@@ -559,6 +559,8 @@ await new Promise(
    EMAIL TRANSPORT
 ========================= */
 
+console.log("STEP 1: sendInvoice started");
+
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 587,
@@ -569,12 +571,15 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+console.log("STEP 2: transporter created");
+
 await transporter.verify();
-console.log("SMTP Connected Successfully");
+
+console.log("STEP 3: SMTP Connected Successfully");
 /* =========================
    SEND EMAIL
 ========================= */
-
+console.log("STEP 4: Sending Email");
 await transporter.sendMail({
 
   from:
